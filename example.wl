@@ -17,7 +17,7 @@ LoadData[names_?ArrayQ] :=
     Do[LoadData[name], {name, names}]
 
 
-LoadData[{"A", "F01", "F02", "W02", "Weierstrass", "w"}]
+LoadData[{"A", "F01", "F02", "W02", "Weierstrass", "w", "dXi"}]
 
 
 (* ::Section:: *)
@@ -42,3 +42,9 @@ y\[Zeta][a_] :=
 
 
 dzdx[x\[Zeta][1],y\[Zeta][1]]+O[\[Zeta]]^5//FullSimplify
+
+
+dXi[z][3]
+
+
+dXi[z][3]/.{Derivative[k_][z][0]->dzd\[Zeta][1,k]}/.{(P^\[Prime]\[Prime])[z-z[0]]->6P[z-z[0]]^2-g2/2}//FullSimplify//Expand
