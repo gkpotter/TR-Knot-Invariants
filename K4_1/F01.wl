@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-BeginPackage["K41`"];
+BeginPackage["K41`F01`"];
 
 
 F01::usage = "\!\(\*RowBox[{\"F01\", \"[\", RowBox[{StyleBox[\"a\", \"TI\", StripOnInput -> False], \",\", \
