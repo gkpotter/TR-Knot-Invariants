@@ -13,11 +13,13 @@ RowBox[{\"a\", \",\", \"l\"}], \"]\"}], \" \", \
 TemplateBox[{\"\[Zeta]\", \"a\", RowBox[{\"l\", \"-\", \"r\"}]}, \
 \"Subsuperscript\", SyntaxForm -> SubsuperscriptBox]}],\"]\"}]}]\).";
 
+F01MaxDegree;
 
 Begin["`Private`"];
 
 F01[a_, l_] :=
     Indexed[F01Coefficients, {a, l}];
+
 
 F01Coefficients = {{0, I * Pi, (-3) ^ (3/4), 0, (-5 * (-3) ^ (1/4)) /
      8, 0, (77 * (-1) ^ (3/4)) / (640 * 3 ^ (1/4)), 0, (137 * (-3) ^ (1/4
@@ -41,6 +43,8 @@ F01Coefficients = {{0, I * Pi, (-3) ^ (3/4), 0, (-5 * (-3) ^ (1/4)) /
     (129761280 * 5 ^ (3/4)), 0, -9360619 / (10305404928 * 5 ^ (1/4)), 0, 
     626300207 / (475634073600 * 5 ^ (3/4)), 0, -1011043042213 / (2587449360384000
      * 5 ^ (1/4))}};
+
+F01MaxDegree = Min[Map[Length, F01Coefficients]];
 
 End[];
 

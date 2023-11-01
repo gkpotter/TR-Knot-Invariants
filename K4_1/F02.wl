@@ -19,6 +19,7 @@ SubsuperscriptBox], \" \", TemplateBox[{\"\[Zeta]\", SubscriptBox[\"a\", \"2\"],
 RowBox[{SubscriptBox[\"l\", \"2\"], \"-\", \"1\"}]}, \"Subsuperscript\", SyntaxForm -> \
 SubsuperscriptBox]}]}]}]}]\).";
 
+F02MaxDegree;
 
 Begin["`Private`"];
 
@@ -2204,6 +2205,8 @@ F02Coefficients = {{{{(-I/24)/Sqrt[3], 0, -149/1152,
          Sqrt[5]), 
       0, -754068584341864438543693199/
        236837854474691804135424000000000}}}};
+
+   F02MaxDegree = Min[Table[Min[Map[Length,F02Coefficients[[a1,a2]]]],{a1,1,4},{a2,1,4}]]
 End[];
 
 
