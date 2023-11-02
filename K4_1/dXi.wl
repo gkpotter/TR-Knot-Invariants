@@ -7,9 +7,8 @@ dXi::usage = "";
 dzd\[Zeta]::usage = "";
 
 dXiRule::usage = "Symbolic rules for dXi."
-
+zP;
 dXiSimplify;
-
 Begin["`Private`"];
 
 Needs["K41`Weierstrass`"];
@@ -18,7 +17,8 @@ Needs["Symbolic`"]
 $$dXi[a_,k_] := Hold[
         Simplify[1 / k!D[$P[z - z[\[Zeta]]] z'[\[Zeta]], {\[Zeta], k - 1}] /. {
             \[Zeta] -> 0}/.{
-            Derivative[l_][z][0]->$dzd\[Zeta][a,l]
+            Derivative[l_][z][0]->$dzd\[Zeta][a,l],
+            z[0]->zP[a]
         }]
     ]
 
