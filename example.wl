@@ -83,8 +83,14 @@ $w[0,3]//wSimplify//dXiSimplify
 (*Calculate w[0,3] as a function of x and y.*)
 
 
-($w[0,3]//wSimplify//dXiSimplify)/.{
-	$dzd\[Zeta]->dzd\[Zeta],
-	$F01->F01,
-	$P[z-zP[a_]]->P[z[x,y]-z[xP[a],yP[a]]]
-}//FullSimplify
+Terms = List@@($w[0,3]//wSimplify//dXiSimplify)
+
+
+wEvaluated[0,3]=Plus@@Map[
+	FullSimplify[#/.{
+		$dzd\[Zeta]->dzd\[Zeta],
+		$F01->F01,
+		$P[z[i_]-zP[a_]]->FullSimplify[P[z[x[i],y[i]]-z[xP[a],yP[a]]]]
+	}]&,
+	Terms
+]

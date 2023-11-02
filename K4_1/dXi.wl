@@ -14,17 +14,17 @@ Begin["`Private`"];
 Needs["K41`Weierstrass`"];
 Needs["Symbolic`"]
 
-$$dXi[a_,k_] := Hold[
-        Simplify[1 / k!D[$P[z - z[\[Zeta]]] z'[\[Zeta]], {\[Zeta], k - 1}] /. {
+$$dXi[a_,k_][i_] := Hold[
+        Simplify[1 / k!D[$P[z[i] - z[\[Zeta]]] z'[\[Zeta]], {\[Zeta], k - 1}] /. {
             \[Zeta] -> 0}/.{
             Derivative[l_][z][0]->$dzd\[Zeta][a,l],
             z[0]->zP[a]
         }]
     ]
 
-dXiRule[a_,l_] := ReleaseHold[$dXi[a,l] -> $$dXi[a,l]];
+dXiRule[a_,l_] := ReleaseHold[$dXi[a,l][i_] -> $$dXi[a,l][i]];
 dXiSimplify[expr_] := Module[{newExpr},
-                        newExpr = expr/.{$dXi[a_,l_] -> $$dXi[a,l]};
+                        newExpr = expr/.{$dXi[a_,l_][i_] -> $$dXi[a,l][i]};
                         ReleaseHold[newExpr]
                     ]
 
