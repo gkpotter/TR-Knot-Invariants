@@ -26,6 +26,9 @@ Import[ProjectDirectory <> "TR/R={(2,3),(2,3),(2,3),(2,3)}.wl"]
 ?K41`Weierstrass`*
 
 
+?F02
+
+
 (* ::Section:: *)
 (*Exact Calculations*)
 
@@ -34,32 +37,26 @@ x\[Zeta][a_] :=
     xP[a] Exp[2 \[Zeta] ^ r[a] / r[a]];
 
 y\[Zeta][a_] :=
-    yP[a] Exp[Sum[F01[a, l] \[Zeta] ^ (l - r[a]), {l, s[a], 10}]];
+    yP[a] Exp[Sum[F01[a, l] \[Zeta] ^ (l - r[a]), {l, s[a], F01MaxDegree}]+F01Tail[\[Zeta]]\[Zeta]^(F01MaxDegree-r[a]+1)]
 
 
-dzdx[x\[Zeta][1],y\[Zeta][1]]+O[\[Zeta]]^5//FullSimplify
+(* ::Text:: *)
+(*Expand dzdx as a series in \[Zeta] near the first ramification point P[1].*)
 
 
-?dXiRule
+dzdx[x\[Zeta][1],y\[Zeta][1]]D[x\[Zeta][1],\[Zeta]]+O[\[Zeta]]^10//FullSimplify
 
 
-dXiRule[1,3]/.{
-$dzd\[Zeta][a_,l_]->dzd\[Zeta][a,l]
-}/.{
-	($P'')[z-z[0]]->6$P[z-z[0]]^2-g2/2
-}//FullSimplify//Expand
+(* ::Text:: *)
+(*Verify dzd\[Zeta]  values. *)
 
 
-wRule[0,3]
+dzd\[Zeta]Table = Table[
+CoefficientList[dzdx[x\[Zeta][a],y\[Zeta][a]]D[x\[Zeta][a],\[Zeta]]+O[\[Zeta]]^17//FullSimplify,\[Zeta]]
+,{a,1,4}]
 
 
-X=4
-
-
-?X
-
-
-dXiRule
+dzd\[Zeta]Table-Table[dzd\[Zeta][a,l]/(l-1)!,{a,1,4},{l,1,17}]
 
 
 (* ::Section:: *)
@@ -80,3 +77,14 @@ $w[0,3]//wSimplify
 
 
 $w[0,3]//wSimplify//dXiSimplify
+
+
+(* ::Text:: *)
+(*Calculate w[0,3] as a function of x and y.*)
+
+
+($w[0,3]//wSimplify//dXiSimplify)/.{
+	$dzd\[Zeta]->dzd\[Zeta],
+	$F01->F01,
+	$P[z-zP[a_]]->P[z[x,y]-z[xP[a],yP[a]]]
+}//FullSimplify
