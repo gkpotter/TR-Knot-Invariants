@@ -5,7 +5,6 @@ BeginPackage["K41`dXi`"];
 
 dXi::usage = "";
 dzd\[Zeta]::usage = "";
-
 dXiRule::usage = "Symbolic rules for dXi."
 zP;
 dXiSimplify;
@@ -20,7 +19,7 @@ $$dXi[a_,k_][i_] := Hold[
             Derivative[l_][z][0]->$dzd\[Zeta][a,l],
             z[0]->zP[a]
         }]
-    ]
+    ]$dz[i]
 
 dXiRule[a_,l_] := ReleaseHold[$dXi[a,l][i_] -> $$dXi[a,l][i]];
 dXiSimplify[expr_] := Module[{newExpr},
