@@ -10,5 +10,4 @@ $F02;
 $w;
 $dzd\[Zeta];
 $dz;
-F01;
 EndPackage[];
