@@ -90,7 +90,8 @@ wEvaluated[0,3]=Plus@@Map[
 	FullSimplify[#/.{
 		$dzd\[Zeta]->dzd\[Zeta],
 		$F01->F01,
-		$P[z[i_]-zP[a_]]->FullSimplify[P[z[x[i],y[i]]-z[xP[a],yP[a]]]]
+		$P[z[i_]-zP[a_]]->FullSimplify[P[z[x[i],y[i]]-z[xP[a],yP[a]]]],
+		$dz[i_]->dzdx[x[i],y[i]]$dx[i]
 	}]&,
 	Terms
 ]
