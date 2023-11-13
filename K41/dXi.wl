@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-BeginPackage["K41`dXi`"];
+BeginPackage["K41`"];
 
 
 dXi::usage = "";
@@ -10,7 +10,6 @@ zP;
 dXiSimplify;
 Begin["`Private`"];
 
-Needs["K41`Weierstrass`"];
 Needs["Symbolic`"]
 
 $$dXi[a_,k_][i_] := Hold[
@@ -21,7 +20,8 @@ $$dXi[a_,k_][i_] := Hold[
         }]
     ]$dz[i]
 
-dXiRule[a_,l_] := ReleaseHold[$dXi[a,l][i_] -> $$dXi[a,l][i]];
+dXiRule[a_,l_] := ReleaseHold[$dXi[a,l][Global`i_] -> $$dXi[a,l][Global`i]];
+
 dXiSimplify[expr_] := Module[{newExpr},
                         newExpr = expr/.{$dXi[a_,l_][i_] -> $$dXi[a,l][i]};
                         ReleaseHold[newExpr]

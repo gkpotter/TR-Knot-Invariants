@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-BeginPackage["K41`Weierstrass`"];
+BeginPackage["K41`"];
 
 
 P::usage = "\!\(\*RowBox[{\"P\", \"[\", \"z\",\"[\", RowBox[{StyleBox[\"x\", \"TI\"], \",\", \
@@ -27,7 +27,6 @@ SqrtBox[\"3\"]}]}], \")\"}], \")\"}]\)."]
 
 
 Begin["`Private`"];
-Needs["K41`W02`"]
 
 P[z[x1_,y1_] - z[x2_,y2_]]:=Evaluate[Simplify[W02[x1,y1,x2,y2]/(dzdx[x1,y1]dzdx[x2,y2])]]
 

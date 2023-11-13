@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-BeginPackage["K41`F02`"];
+BeginPackage["K41`"];
 
 
 F02::usage = "\!\(\*RowBox[{\"F02\", \"[\", RowBox[{SubscriptBox[StyleBox[\"a\", \
@@ -23,7 +23,7 @@ F02MaxDegree;
 
 Begin["`Private`"];
 
-F02[a1_, a2_, l1_, l2_] := Indexed[F02Coefficients, {a1, a2, l1, l2}];
+
 
 F02Coefficients = {{{{(-I/24)/Sqrt[3], 0, -149/1152, 
       0, ((-199*I)/9216)/Sqrt[3], 0, 4541/491520, 
@@ -2206,7 +2206,15 @@ F02Coefficients = {{{{(-I/24)/Sqrt[3], 0, -149/1152,
       0, -754068584341864438543693199/
        236837854474691804135424000000000}}}};
 
-   F02MaxDegree = Min[Table[Min[Map[Length,F02Coefficients[[a1,a2]]]],{a1,1,4},{a2,1,4}]]
+   F02MaxDegree = Min[Table[Min[Map[Length,F02Coefficients[[a1,a2]]]],{a1,1,4},{a2,1,4}]];
+
+   Do[
+      F02[a1, a2, l1, l2] = Indexed[F02Coefficients, {a1, a2, l1, l2}];
+      {a1,1,4},
+      {a2,1,4},
+      {l1,1,F02MaxDegree},
+      {l2,1,F02MaxDegree}
+   ]
 End[];
 
 

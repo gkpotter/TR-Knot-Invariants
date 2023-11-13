@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-BeginPackage["K41`F01`"];
+BeginPackage["K41`"];
 
 
 F01::usage = "\!\(\*RowBox[{\"F01\", \"[\", RowBox[{StyleBox[\"a\", \"TI\", StripOnInput -> False], \",\", \
@@ -16,10 +16,6 @@ TemplateBox[{\"\[Zeta]\", \"a\", RowBox[{\"l\", \"-\", \"r\"}]}, \
 F01MaxDegree;
 
 Begin["`Private`"];
-
-F01[a_, l_] :=
-    Indexed[F01Coefficients, {a, l}];
-
 
 F01Coefficients = {{0, I * Pi, (-3) ^ (3/4), 0, (-5 * (-3) ^ (1/4)) /
      8, 0, (77 * (-1) ^ (3/4)) / (640 * 3 ^ (1/4)), 0, (137 * (-3) ^ (1/4
@@ -45,6 +41,12 @@ F01Coefficients = {{0, I * Pi, (-3) ^ (3/4), 0, (-5 * (-3) ^ (1/4)) /
      * 5 ^ (1/4))}};
 
 F01MaxDegree = Min[Map[Length, F01Coefficients]];
+
+Do[
+    F01[a, l] = Indexed[F01Coefficients, {a, l}];,
+    {a,1,4},
+    {l,1,F01MaxDegree}
+]
 
 End[];
 

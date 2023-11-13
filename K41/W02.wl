@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-BeginPackage["K41`W02`"];
+BeginPackage["K41`"];
 
 
 W02::usage = "\!\(\*RowBox[{\"W02\", \"[\", RowBox[{SubscriptBox[StyleBox[\"x\", \
