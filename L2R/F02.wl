@@ -23,6 +23,8 @@ SubsuperscriptBox]}]}]}]}]\).";
 
 F02MaxDegree;
 
+F02Coefficients;
+
 Begin["`Private`"];
 
 
@@ -514,14 +516,22 @@ F02Coefficients = {{{{Sqrt[43/8064 + 23/(504*Sqrt[2])], 0,
        {(-I/23313776640)*Sqrt[(340941543393724682111 + 241108545401330411918*
              Sqrt[2])/7]}, {}}}};
 
-   F02MaxDegree = Min[Table[Min[Map[Length,F02Coefficients[[a1,a2]]]],{a1,1,4},{a2,1,4}]];
+   F02MaxDegree = Module[{lengths},
+      Min[Table[
+        lengths = Map[Length, F02Coefficients[[1,1]]];
+        First[Select[lengths,
+          # == Count[lengths, i_/;i>=#]&
+        ]],
+        {a1,1,4},
+        {a2,1,4}]
+      ]];
 
    Do[
-      F02[a1, a2, l1, l2] = Indexed[F02Coefficients, {a1, a2, l1, l2}];
+      F02[a1, a2, l1, l2] = Indexed[F02Coefficients, {a1, a2, l1, l2}];,
       {a1,1,4},
       {a2,1,4},
-      {l1,1,F02MaxDegree},
-      {l2,1,F02MaxDegree}
+      {l1,1,Length[Indexed[F02Coefficients,{a1,a2}]]},
+      {l2,1,Length[Indexed[F02Coefficients,{a1,a2,l1}]]}
    ]
 End[];
 
