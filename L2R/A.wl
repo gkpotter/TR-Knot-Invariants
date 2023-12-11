@@ -16,7 +16,7 @@ yP::usage = "\!\(\*RowBox[{\"yP\", \"[\", StyleBox[\"a\", \"TI\"], \"]\"}]\) is 
 R::usage = "\!\(\*RowBox[{\"R\", \"[\", StyleBox[\"a\", \"TI\"], \"]\"}]\) is the ramification type \!\(\*RowBox[{\"(\", RowBox[{SubscriptBox[\"r\", \"a\"], \",\", SubscriptBox[\"s\", \"a\"]}], \
 \")\"}]\).";
 
-RamificationPofile::usage = "\!\(\"RamificationProfile\"\) is the ramification profile \!\(\*RowBox[{\"(\",RowBox[{\"(\", RowBox[{SubscriptBox[\"r\", \"1\"], \",\", SubscriptBox[\"s\", \"1\"]}], \
+RamificationProfile::usage = "\!\(\"RamificationProfile\"\) is the ramification profile \!\(\*RowBox[{\"(\",RowBox[{\"(\", RowBox[{SubscriptBox[\"r\", \"1\"], \",\", SubscriptBox[\"s\", \"1\"]}], \
 \")\"}], \",\", RowBox[{\"(\", RowBox[{SubscriptBox[\"r\", \"2\"], \",\", SubscriptBox[\"s\", \"2\"]}], \
 \")\"}],\",\",\" ...\",\")\"}]\).";
 
@@ -51,16 +51,16 @@ xP[a_] :=
 yP[a_] :=
     Indexed[yPValues, a]
 
-RamificationPofile = {{2, 3}, {2, 3}, {2, 3}, {2, 3}};
+RamificationProfile = {{2, 3}, {2, 3}, {2, 3}, {2, 3}};
 
 R[a_] :=
-    Indexed[RamificationPofile, a];
+    Indexed[RamificationProfile, a];
 
 r[a_] :=
-    Indexed[RamificationPofile, {a, 1}];
+    Indexed[RamificationProfile, {a, 1}];
 
 s[a_] :=
-    Indexed[RamificationPofile, {a, 2}]
+    Indexed[RamificationProfile, {a, 2}]
 
 
 End[];
