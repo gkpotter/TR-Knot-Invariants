@@ -33,17 +33,24 @@ A[x_, y_] :=
 
 dydx[x_, y_] := (1 + 2 y + 4 x y - 3 x^2 y + 2 x y^2)/(1 - 2 x - 2 x^2 + x^3 - 
  2 x^2 y);
-    
 
-xPValues = {1/2 + Sqrt[2] - 1/2 Sqrt[5 + 4 Sqrt[2]], 
- 1/2 (1 + 2 Sqrt[2] + Sqrt[5 + 4 Sqrt[2]]), 
- 1/2 (1 - 2 Sqrt[2] - I Sqrt[-5 + 4 Sqrt[2]]), 
- 1/2 (1 - 2 Sqrt[2] + I Sqrt[-5 + 4 Sqrt[2]])};
+\[Alpha]xP = Root[
+ 5888 + 6656 # + 768 #^2 - 11664 #^3 + 8345 #^4 - 2576 #^5 + 406 #^6 - 
+  32 #^7 + #^8& , 4, 0]    
 
-yPValues = {1/2 (1 + Sqrt[2] + Sqrt[-1 + 2 Sqrt[2]]), 
- 1/2 (1 + Sqrt[2] - Sqrt[-1 + 2 Sqrt[2]]), 
- 1/2 (1 - Sqrt[2] - I Sqrt[1 + 2 Sqrt[2]]), 
- 1/2 (1 - Sqrt[2] + I Sqrt[1 + 2 Sqrt[2]])};
+xPValues = ToNumberField[{
+    1/2 + Sqrt[2] - 1/2 Sqrt[5 + 4 Sqrt[2]], 
+    1/2 (1 + 2 Sqrt[2] + Sqrt[5 + 4 Sqrt[2]]), 
+    1/2 (1 - 2 Sqrt[2] - I Sqrt[-5 + 4 Sqrt[2]]), 
+    1/2 (1 - 2 Sqrt[2] + I Sqrt[-5 + 4 Sqrt[2]])
+    },\[Alpha]xP];
+
+yPValues =  ToNumberField[{
+    1/2 (1 + Sqrt[2] + Sqrt[-1 + 2 Sqrt[2]]), 
+    1/2 (1 + Sqrt[2] - Sqrt[-1 + 2 Sqrt[2]]), 
+    1/2 (1 - Sqrt[2] - I Sqrt[1 + 2 Sqrt[2]]), 
+    1/2 (1 - Sqrt[2] + I Sqrt[1 + 2 Sqrt[2]])
+    },\[Alpha]xP];
 
 xP[a_] :=
     Indexed[xPValues, a]
