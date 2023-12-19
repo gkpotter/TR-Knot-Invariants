@@ -25,6 +25,7 @@ r::usage = "\!\(\*RowBox[{\"r\", \"[\", StyleBox[\"a\", \"TI\"], \"]\"}]\) is th
 s::usage = "\!\(\*RowBox[{\"s\", \"[\", StyleBox[\"a\", \"TI\"], \"]\"}]\) is the \!\(\*SubscriptBox[\"s\", \"a\"]\) from the ramification type \!\(\*RowBox[{\"(\", RowBox[{SubscriptBox[\"r\", \"a\"], \",\", SubscriptBox[\"s\", \"a\"]}], \
 \")\"}]\).";
 
+\[Alpha]xP;
 
 Begin["`Private`"];
 
